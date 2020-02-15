@@ -1,0 +1,11 @@
+from flask import Flask
+app = Flask(__name__)
+
+
+@app.route('/bleh')
+def meh():
+    return "Welcome, master ma.", 200
+
+
+if __name__ == '__main__':
+    app.run()
