@@ -1,3 +1,4 @@
+"""
 from transformers import *
 import torch
 
@@ -15,3 +16,5 @@ def from_question_return_answer(question, text):
 
 question, text = "How many moods are there?", "My four moods: I'm too old for this shit! I'm too old for this shit! I'm too sober for this shit! I don't have time for this shit!"
 print(from_question_return_answer(question, text))
+
+"""
