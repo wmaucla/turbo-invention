@@ -1,11 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template, url_for, redirect
 app = Flask(__name__)
 
 
-@app.route('/bleh')
-def meh():
-    return "Welcome, master ma.", 200
-
+@app.route('/')
+def base_page():
+    return render_template("index.html")
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
