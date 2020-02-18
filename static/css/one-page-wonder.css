@@ -128,12 +128,12 @@ header.masthead .bg-circle-4 {
 }
 
 .bg-primary {
-  background-color: #ee0979 !important;
+  background-color: #92b9f7 !important;
 }
 
 .btn-primary {
-  background-color: #ee0979;
-  border-color: #ee0979;
+  background-color: #92b9f7;
+  border-color: #92b9f7;
 }
 
 .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
@@ -142,7 +142,7 @@ header.masthead .bg-circle-4 {
 }
 
 .btn-primary:focus {
-  box-shadow: 0 0 0 0.2rem rgba(238, 9, 121, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(61, 142, 142, 0.5);
 }
 
 .btn-secondary {
