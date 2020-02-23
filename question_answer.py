@@ -14,16 +14,16 @@ def question_answer(question, text, model, tokenizer):
 
 """
 if __name__ == "__main__":
-    tokenizer = BertTokenizer.from_pretrained('./tokenizer_s3')
+    tokenizer = BertTokenizer.from_pretrained('./tokenizer_albert')
     model = BertForQuestionAnswering.from_pretrained('./model_data')
     print(question_answer("Who is John?", "I eat pizza. John is a criminal", model, tokenizer))
     bucketname = 'qaexample'  # replace with your bucket name
     s3 = boto3.resource('s3').Bucket(bucketname)
-    # s3.Bucket(bucketname).download_file("special_tokens_map.json", 'tokenizer_s3/coasdfaig1.json')
+    # s3.Bucket(bucketname).download_file("special_tokens_map.json", 'tokenizer_albert/coasdfaig1.json')
 
         for object in s3.objects.all():
         if object.key in ["special_tokens_map.json", "tokenizer_config.json", "vocab.txt"]:
-            s3.download_file(object.key, 'tokenizer_s3/{}'.format(object.key))
+            s3.download_file(object.key, 'tokenizer_albert/{}'.format(object.key))
         elif object.key in ["config.json", "pytorch_model.bin"]:
             s3.download_file(object.key, 'model_data/{}'.format(object.key))
 """
@@ -38,6 +38,7 @@ if __name__ == "__main__":
     import torch
 
     tokenizer = AlbertTokenizer.from_pretrained('albert-base-v2')
+    tokenizer.save_pretrained("./tokenizer_albert")
     model = AlbertForQuestionAnswering.from_pretrained('./model_data')
 
     question, text = "How many moods are there?", "My four moods: I'm too old for this shit! I'm too cold for this shit! I'm too sober for this shit! I don't have time for this shit!"
