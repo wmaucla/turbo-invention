@@ -12,8 +12,3 @@ def question_answer(question, text):
     start_scores, end_scores = model(torch.tensor([input_ids]), token_type_ids=torch.tensor([token_type_ids]))
     all_tokens = tokenizer.convert_ids_to_tokens(input_ids)
     return (' '.join(all_tokens[torch.argmax(start_scores) : torch.argmax(end_scores) +1]))
-
-
-question, text = "How many moods are there?", "My four moods: I'm too old for this shit! I'm too old for this shit! I'm too sober for this shit! I don't have time for this shit!"
-
-print(question_answer(question, text))
