@@ -26,9 +26,8 @@ if __name__ == "__main__":
             s3.download_file(object.key, 'tokenizer_albert/{}'.format(object.key))
         elif object.key in ["config.json", "pytorch_model.bin"]:
             s3.download_file(object.key, 'model_data/{}'.format(object.key))
-"""
-
-if __name__ == "__main__":
+            
+            
     # model = AutoModel.from_pretrained("distilbert-base-multilingual-cased")
 
     # model = BertForQuestionAnswering.from_pretrained('distilbert-base-uncased-distilled-squad')
@@ -50,3 +49,4 @@ if __name__ == "__main__":
     all_tokens = tokenizer.convert_ids_to_tokens(input_ids[0])
     answer = ''.join(all_tokens[torch.argmax(start_scores): torch.argmax(end_scores) + 1]).replace('▁', ' ').strip()
     print(answer)
+"""
