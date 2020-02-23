@@ -1,6 +1,7 @@
 from transformers import *
 import torch
 import boto3
+import pickle
 
 def question_answer(question, text, model, tokenizer):
     input_text = "[CLS]" + question + " [SEP] " + text + " [SEP]"
@@ -26,3 +27,25 @@ if __name__ == "__main__":
         elif object.key in ["config.json", "pytorch_model.bin"]:
             s3.download_file(object.key, 'model_data/{}'.format(object.key))
 """
+
+if __name__ == "__main__":
+    # model = AutoModel.from_pretrained("distilbert-base-multilingual-cased")
+
+    # model = BertForQuestionAnswering.from_pretrained('distilbert-base-uncased-distilled-squad')
+    # model.save_pretrained("/home/william/Documents/repos/turbo-invention/model_data/")
+
+    from transformers import AlbertTokenizer, AlbertForQuestionAnswering
+    import torch
+
+    tokenizer = AlbertTokenizer.from_pretrained('albert-base-v2')
+    model = AlbertForQuestionAnswering.from_pretrained('./model_data')
+
+    question, text = "How many moods are there?", "My four moods: I'm too old for this shit! I'm too cold for this shit! I'm too sober for this shit! I don't have time for this shit!"
+
+    input_dict = tokenizer.encode_plus(question, text, return_tensors="pt")
+    input_ids = input_dict["input_ids"].tolist()
+    start_scores, end_scores = model(**input_dict)
+
+    all_tokens = tokenizer.convert_ids_to_tokens(input_ids[0])
+    answer = ''.join(all_tokens[torch.argmax(start_scores): torch.argmax(end_scores) + 1]).replace('▁', ' ').strip()
+    print(answer)
