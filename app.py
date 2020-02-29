@@ -8,27 +8,23 @@ from io import BytesIO
 app = Flask(__name__)
 
 def load_models():
-    """s3_bucket = boto3.resource('s3').Bucket('albert-model-files')
+    s3_bucket = boto3.resource('s3').Bucket('albert-model-files')
     for object in s3_bucket.objects.all():
-        if object.key in ["config.json", "vocab.txt"]:
+        if object.key in ["config.json", "vocab.txt", "pytorch_model.bin"]:
             s3_bucket.download_file(object.key, 'model_data/{}'.format(object.key))
 
-    s3 = boto3.resource('s3')
-    obj = s3.Object('albert-model-files', 'pytorch_model.bin')"""
-    # body = obj.get()['Body'].read()
-
+    for object in s3_bucket.objects.all():
+        if object.key in ["special_tokens_map.json", "spiece.model", "tokenizer_config.json"]:
+            s3_bucket.download_file(object.key, 'tokenizer_albert/{}'.format(object.key))
 
     tokenizer = AlbertTokenizer.from_pretrained('./tokenizer_albert')
-    # model = AlbertForQuestionAnswering.from_pretrained('./model_data')
-    model = AlbertForQuestionAnswering.from_pretrained('albert-base-v1')
+    model = AlbertForQuestionAnswering.from_pretrained('./model_data')
+    # model = AlbertForQuestionAnswering.from_pretrained('albert-base-v1')
     return model, tokenizer
 
 
 def question_answer(question, text):
     model, tokenizer = load_models()
-
-    import pdb
-    pdb.set_trace()
     input_dict = tokenizer.encode_plus(question, text, return_tensors="pt")
     input_ids = input_dict["input_ids"].tolist()
     start_scores, end_scores = model(**input_dict)
@@ -44,4 +40,4 @@ def test_qa():
     return(question_answer(question, text))
 
 if __name__ == '__main__':
-    test_qa()
+    print(test_qa())

@@ -38,7 +38,7 @@ if __name__ == "__main__":
     from transformers import AlbertTokenizer, AlbertForQuestionAnswering
     import torch
 
-    tokenizer = AlbertTokenizer.from_pretrained('albert-base-v2')
+    tokenizer = AlbertTokenizer.from_pretrained('./tokenizer_albert')
     # tokenizer.save_pretrained("./tokenizer_albert")
     model = AlbertForQuestionAnswering.from_pretrained('./model_data')
     # model = AlbertForQuestionAnswering.from_pretrained('albert-base-v2')
