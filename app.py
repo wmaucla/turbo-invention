@@ -21,9 +21,8 @@ def load_models():
     tokenizer = AlbertTokenizer.from_pretrained('./tokenizer_albert')
     # model = AlbertForQuestionAnswering.from_pretrained('./model_data')
     model = AlbertForQuestionAnswering.from_pretrained('albert-base-v1')
-    import pdb
-    pdb.set_trace()
     return model, tokenizer
+
 
 def question_answer(question, text):
     model, tokenizer = load_models()

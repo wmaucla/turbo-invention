@@ -12,9 +12,10 @@ def question_answer(question, text, model, tokenizer):
     return (' '.join(all_tokens[torch.argmax(start_scores) : torch.argmax(end_scores) +1]))
 
 
-"""
+
 if __name__ == "__main__":
-    tokenizer = BertTokenizer.from_pretrained('./tokenizer_albert')
+    """
+        tokenizer = BertTokenizer.from_pretrained('./tokenizer_albert')
     model = BertForQuestionAnswering.from_pretrained('./model_data')
     print(question_answer("Who is John?", "I eat pizza. John is a criminal", model, tokenizer))
     bucketname = 'qaexample'  # replace with your bucket name
@@ -26,6 +27,7 @@ if __name__ == "__main__":
             s3.download_file(object.key, 'tokenizer_albert/{}'.format(object.key))
         elif object.key in ["config.json", "pytorch_model.bin"]:
             s3.download_file(object.key, 'model_data/{}'.format(object.key))
+            """
             
             
     # model = AutoModel.from_pretrained("distilbert-base-multilingual-cased")
@@ -37,8 +39,9 @@ if __name__ == "__main__":
     import torch
 
     tokenizer = AlbertTokenizer.from_pretrained('albert-base-v2')
-    tokenizer.save_pretrained("./tokenizer_albert")
+    # tokenizer.save_pretrained("./tokenizer_albert")
     model = AlbertForQuestionAnswering.from_pretrained('./model_data')
+    # model = AlbertForQuestionAnswering.from_pretrained('albert-base-v2')
 
     question, text = "How many moods are there?", "My four moods: I'm too old for this shit! I'm too cold for this shit! I'm too sober for this shit! I don't have time for this shit!"
 
@@ -49,4 +52,4 @@ if __name__ == "__main__":
     all_tokens = tokenizer.convert_ids_to_tokens(input_ids[0])
     answer = ''.join(all_tokens[torch.argmax(start_scores): torch.argmax(end_scores) + 1]).replace('▁', ' ').strip()
     print(answer)
-"""
+
