@@ -1,20 +1,35 @@
-"""
-from transformers import *
 import torch
+import boto3
+from transformers import AlbertTokenizer, AlbertForQuestionAnswering
+import os
 
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-model = BertForQuestionAnswering.from_pretrained('bert-large-uncased-whole-word-masking-finetuned-squad')
+
+def load_models():
+    # Download files locally if not exist from S3 bucket
+    s3_bucket = boto3.resource('s3').Bucket('albert-model-files')
+    for object in s3_bucket.objects.all():
+        if object.key in ["config.json", "vocab.txt", "pytorch_model.bin"]:
+            if not os.path.exists('model_data/{}'.format(object.key)):
+                s3_bucket.download_file(object.key, 'model_data/{}'.format(object.key))
+
+    for object in s3_bucket.objects.all():
+        if object.key in ["special_tokens_map.json", "spiece.model", "tokenizer_config.json"]:
+            if not os.path.exists('tokenizer_albert/{}'.format(object.key)):
+                s3_bucket.download_file(object.key, 'tokenizer_albert/{}'.format(object.key))
+
+    # Load pretrained models
+    tokenizer = AlbertTokenizer.from_pretrained('./tokenizer_albert')
+    model = AlbertForQuestionAnswering.from_pretrained('./model_data')
+    return model, tokenizer
 
 
-def from_question_return_answer(question, text):
-    input_text = "[CLS]" + question + " [SEP] " + text + " [SEP]"
-    input_ids = tokenizer.encode(input_text)
-    token_type_ids = [0 if i <= input_ids.index(102) else 1 for i in range(len(input_ids))]
-    start_scores, end_scores = model(torch.tensor([input_ids]), token_type_ids=torch.tensor([token_type_ids]))
-    all_tokens = tokenizer.convert_ids_to_tokens(input_ids)
-    return (' '.join(all_tokens[torch.argmax(start_scores) : torch.argmax(end_scores) +1]))
+def question_answer(question, text):
+    # Torch code to return output from pretrained models
+    model, tokenizer = load_models()
+    input_dict = tokenizer.encode_plus(question, text, return_tensors="pt")
+    input_ids = input_dict["input_ids"].tolist()
+    start_scores, end_scores = model(**input_dict)
 
-question, text = "How many moods are there?", "My four moods: I'm too old for this shit! I'm too old for this shit! I'm too sober for this shit! I don't have time for this shit!"
-print(from_question_return_answer(question, text))
-
-"""
+    all_tokens = tokenizer.convert_ids_to_tokens(input_ids[0])
+    answer = ''.join(all_tokens[torch.argmax(start_scores): torch.argmax(end_scores) + 1]).replace('▁', ' ').strip()
+    return answer

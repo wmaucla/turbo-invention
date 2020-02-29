@@ -1,3 +1,5 @@
 zappa_settings.json
 .env
 .idea/
+*.txt
+*.model
