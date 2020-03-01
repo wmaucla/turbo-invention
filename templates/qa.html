@@ -22,7 +22,7 @@
        $(document).ready(function() {
        $('#retrieve').click(function(){
            var qaquestion = $('#qaquestion').val();
-           var qatext = $('#qaquestion').val();
+           var qatext = $('#qatext').val();
            $.ajax({
            url: "/qa",
            type: "get",
@@ -44,7 +44,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">About Me</a>
+      <a class="navbar-brand" style="color:white">About Me</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -107,7 +107,7 @@
                 <div class="container">
                   <div class="p-5">
                     <p> The following is a demo of Question Answer. It's powered by huggingface and pytorch, with the model being a finetuned ALBERT model. It hasn't been trained for too many epochs, but it should work for simple questions! </p>
-                    <p> Try this out for a sample: text - "My name is William. I love making python projects. I'm a data scientist"; question - "what do I enjoy doing?" </p>
+                    <p> Try this out for a sample: text - "Hello! My name is William. I am a data scientist who loves python projects. I want to work on lots of interesting deep learning projects."; question - "What do I enjoy?" </p>
                     <label for="qatext">Question/Answer Test: </label><br>
                     <textarea id="qatext" name="qa_text"> Paste sample text here </textarea> </br>
                     <label for="qaquestion">Question (Note this might take a few seconds)</label><br>
