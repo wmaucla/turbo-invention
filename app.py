@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 from question_answer import question_answer
 
 app = Flask(__name__)
@@ -6,11 +6,17 @@ app = Flask(__name__)
 
 @app.route('/qa')
 def qa():
-    question, text = "How many moods are there?", "My four moods: I'm too old for this shit! I'm too old for this shit! I'm too sober for this shit! I don't have time for this shit!"
-    return(question_answer(question, text))
+    question, text = request.args.get("qaquestion"), request.args.get("qatext")
+    return jsonify({'html': question_answer(question, text)})
+
+
+@app.route('/qa_page')
+def qa_page():
+    return render_template("qa.html")
 
 
 @app.route('/')
+@app.route('/home')
 def base_page():
     return render_template("index.html")
 

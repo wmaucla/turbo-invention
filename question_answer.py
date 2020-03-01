@@ -29,7 +29,6 @@ def question_answer(question, text):
     input_dict = tokenizer.encode_plus(question, text, return_tensors="pt")
     input_ids = input_dict["input_ids"].tolist()
     start_scores, end_scores = model(**input_dict)
-
     all_tokens = tokenizer.convert_ids_to_tokens(input_ids[0])
     answer = ''.join(all_tokens[torch.argmax(start_scores): torch.argmax(end_scores) + 1]).replace('▁', ' ').strip()
     return answer
