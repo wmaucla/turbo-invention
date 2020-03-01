@@ -107,7 +107,7 @@
                 <div class="container">
                   <div class="p-5">
                     <p> The following is a demo of Question Answer. It's powered by huggingface and pytorch, with the model being a finetuned ALBERT model. It hasn't been trained for too many epochs, but it should work for simple questions! </p>
-                    <p> Try this out for a sample: text - "Hello! My name is William. I am a data scientist who loves python projects. I want to work on lots of interesting deep learning projects."; question - "What do I enjoy?" </p>
+                    <p> Try this out for a sample: </br> text - "Hello! My name is William. I am a data scientist who loves python projects. I'm currently working on practical deep learning projects." </br> question - "What do I enjoy?" </p>
                     <label for="qatext">Question/Answer Test: </label><br>
                     <textarea id="qatext" name="qa_text"> Paste sample text here </textarea> </br>
                     <label for="qaquestion">Question (Note this might take a few seconds)</label><br>
@@ -121,6 +121,15 @@
       </div>
     </div>
   </section>
+
+
+  <header class="text-center text-black">
+    <div class="masthead-content">
+      <div class="container">
+        <h1 class="masthead-heading mb-0">Back to main page <a href="{{ url_for('base_page') }}"> here</a></h1>
+      </div>
+    </div>
+  </header>
 
   <!-- Footer -->
   <footer class="py-5 bg-black">

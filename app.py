@@ -16,6 +16,7 @@ def qa_page():
 
 
 @app.route('/')
+@app.route('/home')
 def base_page():
     return render_template("index.html")
 
