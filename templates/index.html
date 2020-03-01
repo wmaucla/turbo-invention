@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Bootstrap core CSS -->
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="http://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename='css/one-page-wonder.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container">
+      <a class="navbar-brand" style="color:white">About Me</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.linkedin.com/in/williammaucla">LinkedIn</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://wmaucla.bitbucket.io">Bitbucket</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/wmaucla">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="masthead text-center text-white">
+    <div class="masthead-content">
+      <div class="container">
+        <h1 class="masthead-heading mb-0">Welcome to Turbo Invention!</h1>
+        <h2 class="masthead-subheading mb-0">An End to End Data Science Project</h2>
+        <!-- <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a> -->
+      </div>
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="order-lg-1">
+          <div class="p-5">
+            <h1 class="display-4">What is Data Science?</h1>
+            <p>Data Science has been considered one of the hot new jobs of the century, but many companies are misinformed about what data scientists can/should do.
+            This is my attempt to create a project - end to end - that showcases the power of data scientists. It involves computer vision, natural language processing, severless deployment, and much, much more!
+            None of these technologies are revolutionary on their own, but knitted together they can truly help companies leverage AI.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2">
+          <div class="p-5">
+            <img class="img-fluid" src="{{ url_for('static', filename='img/flask_logo.png') }}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="p-5">
+            <h2 class="display-4">Designed with Flask & Bootstrap</h2>
+            <p>Data scientists should have the ability to create simple, elegant frontends for projects. Here I'm using flask to create a simple frontend based on a free bootstrap theme (see <a href="https://startbootstrap.com/themes/one-page-wonder/"> here</a>).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="{{ url_for('static', filename='img/hugging-face.png') }}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="p-5">
+            <h2 class="display-4">Transformers (NLP)</h2>
+            <p>NLP is a hot research topic. Pretrained models have fundamentally changed the game - now, we can leverage state of the art models without having to train from scratch! Here, I'm using the fantasic
+              hugging face transformers library's pretrained models for question answering. Check it <a href="https://huggingface.co/transformers/"> out</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="{{ url_for('static', filename='img/aws_lambda.png') }}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="p-5">
+            <h2 class="display-4">Severless Deployment</h2>
+            <p>The difference between a data scientist and a data engineer depends on who you ask. To me, a data scientist needs to be able to handle simple deployments. Whether it's configuring build pipelines for CI/CD or handling containerization, these are all useful skills to have.
+              For this project, I've chosen to have it deployed on AWS Lambda via a great framework called <a href="https://github.com/Miserlou/Zappa">Zappa</a>. This is truly an end-to-end application!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <header class="text-center text-black">
+    <div class="masthead-content">
+      <div class="container">
+        <h1 class="masthead-heading mb-0">Check out Question/Answer <a href="{{ url_for('qa_page') }}"> here</a></h1>
+      </div>
+    </div>
+  </header>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-black">
+    <div class="container">
+      <p class="m-0 text-center text-white small">Copyright &copy; William Ma 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+</body>
+
+</html>

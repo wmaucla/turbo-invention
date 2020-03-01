@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Bootstrap core CSS -->
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="http://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename='css/one-page-wonder.css') }}" rel="stylesheet">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type=text/javascript>
+       $(document).ready(function() {
+       $('#retrieve').click(function(){
+           var qaquestion = $('#qaquestion').val();
+           var qatext = $('#qatext').val();
+           $.ajax({
+           url: "/qa",
+           type: "get",
+           data: {qaquestion: qaquestion, qatext: qatext},
+           success: function(response) {
+           $("#qaresult").html(response.html);
+          },
+          error: function(xhr) {
+            //Do Something to handle error
+         }
+         });
+       });
+    });
+  </script>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container">
+      <a class="navbar-brand" style="color:white">About Me</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.linkedin.com/in/williammaucla">LinkedIn</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://wmaucla.bitbucket.io">Bitbucket</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/wmaucla">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="masthead text-center text-white">
+    <div class="masthead-content">
+      <div class="container">
+        <h1 class="masthead-heading mb-0">Question Answer</h1>
+      </div>
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="order-lg-1">
+          <div class="p-5">
+            <h1 class="display-4">What is Question Answer?</h1>
+            <p>Question Answer is a NLP technique in which we try and build a model that allows us to ask a question and obtain a response from the text itself.
+              The following comes from huggingface transformer's website:</br></br>
+              Give the following text, </br>
+              Extractive Question Answering is the task of extracting an answer from a text given a question. An example of a
+              question answering dataset is the SQuAD dataset, which is entirely based on that task. If you would like to fine-tune
+              a model on a SQuAD task, you may leverage the `run_squad.py`.
+              </br></br>
+              The question is "What is extractive question answering?" </br>
+              The response we would expect would be "the task of extracting an answer from a text given a question" </br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+  <div class="container">
+      <div class="row align-items-center">
+        <div class="order-lg-1">
+          <div class="p-5">
+            <h1 class="display-4">QA Demo</h1>
+                <div class="container">
+                  <div class="p-5">
+                    <p> The following is a demo of Question Answer. It's powered by huggingface and pytorch, with the model being a finetuned ALBERT model. It hasn't been trained for too many epochs, but it should work for simple questions! </p>
+                    <p> Try this out for a sample: </br> text - "Hello! My name is William. I am a data scientist who loves python projects. I'm currently working on practical deep learning projects." </br> question - "What do I enjoy?" </p>
+
+                    <form action="{{ url_for('qa_static') }}" id ="myform" method="post">
+                      <label for="qatext">Text for Question Answer</label><br>
+                      <textarea id="qatext" name="qatext"> {{ text }} </textarea> </br>
+                       <label for="qaquestion">Question</label><br>
+                      <input type="text" id="qaquestion" name="qaquestion">
+                       <input type="submit" value="Submit"><br>
+                    </form>
+                    <p> Answer: {{ response }} </p>
+
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <header class="text-center text-black">
+    <div class="masthead-content">
+      <div class="container">
+        <h1 class="masthead-heading mb-0">Back to main page <a href="{{ url_for('base_page') }}"> here</a></h1>
+      </div>
+    </div>
+  </header>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-black">
+    <div class="container">
+      <p class="m-0 text-center text-white small">Copyright &copy; William Ma 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+</body>
+
+</html>
