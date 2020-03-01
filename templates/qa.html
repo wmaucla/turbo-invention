@@ -20,16 +20,19 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type=text/javascript>
        $(document).ready(function() {
-       $('#submit').click(function(){
-           var qa_text = $('#qatext').val();
-           var qa_question = $('#qaresponse').val();
+       $('#retrieve').click(function(){
+           var qaquestion = $('#qaquestion').val();
+           var qatext = $('#qaquestion').val();
            $.ajax({
            url: "/qa",
-           type: "post",
-           data: {qa_text: qa_text, qa_question: qa_question},
+           type: "get",
+           data: {qaquestion: qaquestion, qatext: qatext},
            success: function(response) {
-           $("#wordResult").html(response.html);
-          }
+           $("#qaresult").html(response.html);
+          },
+          error: function(xhr) {
+            //Do Something to handle error
+         }
          });
        });
     });
@@ -105,6 +108,7 @@
                   <div class="p-5">
                     <p> The following is a demo of Question Answer. It's powered by huggingface and pytorch, with the model being a finetuned ALBERT model. It hasn't been trained for too many epochs, but it should work for simple questions! </p>
                     <p> Try this out for a sample: text - "My name is William. I love making python projects. I'm a data scientist"; question - "what do I enjoy doing?" </p>
+                    <!--
                     <form action="{{ url_for('qa') }}" id ="myform" method="post">
                       <label for="qa_text">Text for Question Answer</label><br>
                       <textarea id="qatext" name="qa_text"> Paste sample text here </textarea> </br>
@@ -112,6 +116,13 @@
                       <input type="text" id="qaquestion" name="qa_question">
                        <input type="submit" value="Submit"><br>
                         </form>
+                    -->
+                    <label for="qatext">Question/Answer Test: </label><br>
+                    <textarea id="qatext" name="qa_text"> Paste sample text here </textarea> </br>
+                    <label for="qaquestion">Question</label><br>
+                    <input type='text' id='qaquestion'>
+                    <button type='button' id ='retrieve'>Submit</button>
+                    <div id='qaresult'></div>
                   </div>
                 </div>
           </div>
