@@ -108,20 +108,11 @@
                   <div class="p-5">
                     <p> The following is a demo of Question Answer. It's powered by huggingface and pytorch, with the model being a finetuned ALBERT model. It hasn't been trained for too many epochs, but it should work for simple questions! </p>
                     <p> Try this out for a sample: text - "My name is William. I love making python projects. I'm a data scientist"; question - "what do I enjoy doing?" </p>
-                    <!--
-                    <form action="{{ url_for('qa') }}" id ="myform" method="post">
-                      <label for="qa_text">Text for Question Answer</label><br>
-                      <textarea id="qatext" name="qa_text"> Paste sample text here </textarea> </br>
-                       <label for="qa_question">Question</label><br>
-                      <input type="text" id="qaquestion" name="qa_question">
-                       <input type="submit" value="Submit"><br>
-                        </form>
-                    -->
                     <label for="qatext">Question/Answer Test: </label><br>
                     <textarea id="qatext" name="qa_text"> Paste sample text here </textarea> </br>
-                    <label for="qaquestion">Question</label><br>
+                    <label for="qaquestion">Question (Note this might take a few seconds)</label><br>
                     <input type='text' id='qaquestion'>
-                    <button type='button' id ='retrieve'>Submit</button>
+                    <button type='button' id ='retrieve'>Submit</button></br>
                     <div id='qaresult'></div>
                   </div>
                 </div>

@@ -7,7 +7,6 @@ app = Flask(__name__)
 @app.route('/qa')
 def qa():
     question, text = request.args.get("qaquestion"), request.args.get("qatext")
-    print(question_answer(question, text))
     return jsonify({'html': question_answer(question, text)})
 
 
