@@ -64,45 +64,12 @@
     </div>
   </nav>
 
-  <header class="masthead text-center text-white">
-    <div class="masthead-content">
-      <div class="container">
-        <h1 class="masthead-heading mb-0">Question Answer</h1>
-      </div>
-    </div>
-    <div class="bg-circle-1 bg-circle"></div>
-    <div class="bg-circle-2 bg-circle"></div>
-    <div class="bg-circle-3 bg-circle"></div>
-    <div class="bg-circle-4 bg-circle"></div>
-  </header>
-
-  <section>
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="order-lg-1">
-          <div class="p-5">
-            <h1 class="display-4">What is Question Answer?</h1>
-            <p>Question Answer is a NLP technique in which we try and build a model that allows us to ask a question and obtain a response from the text itself.
-              The following comes from huggingface transformer's website:</br></br>
-              Give the following text, </br>
-              Extractive Question Answering is the task of extracting an answer from a text given a question. An example of a
-              question answering dataset is the SQuAD dataset, which is entirely based on that task. If you would like to fine-tune
-              a model on a SQuAD task, you may leverage the `run_squad.py`.
-              </br></br>
-              The question is "What is extractive question answering?" </br>
-              The response we would expect would be "the task of extracting an answer from a text given a question" </br>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section>
   <div class="container">
       <div class="row align-items-center">
         <div class="order-lg-1">
           <div class="p-5">
+          </br>
             <h1 class="display-4">QA Demo</h1>
                 <div class="container">
                   <div class="p-5">
@@ -113,7 +80,7 @@
                       <label for="qatext">Text for Question Answer</label><br>
                       <textarea id="qatext" name="qatext"> {{ text }} </textarea> </br>
                        <label for="qaquestion">Question</label><br>
-                      <input type="text" id="qaquestion" name="qaquestion">
+                      <input type="text" placeholder="{{ question }}" id="qaquestion" name="qaquestion">
                        <input type="submit" value="Submit"><br>
                     </form>
                     <p> Answer: {{ response }} </p>

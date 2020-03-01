@@ -10,6 +10,12 @@ def qa():
     return jsonify({'html': question_answer(question, text)})
 
 
+@app.route('/qa_static', methods=['POST'])
+def qa_static():
+    question, text = request.form["qaquestion"], request.form["qatext"]
+    return render_template("qa_static.html", response=question_answer(question, text), text=text, question=question)
+
+
 @app.route('/qa_page')
 def qa_page():
     return render_template("qa.html")
