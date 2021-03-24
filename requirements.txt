@@ -31,7 +31,7 @@ python-slugify==1.2.4
 PyYAML==5.1
 regex==2020.2.20
 requests==2.20.0
-rsa==3.4.2
+rsa==4.1
 s3transfer==0.1.13
 sacremoses==0.0.38
 sentencepiece==0.1.85
