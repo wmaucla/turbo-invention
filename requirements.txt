@@ -28,7 +28,7 @@ placebo==0.8.2
 pyasn1==0.4.8
 python-dateutil==2.6.1
 python-slugify==1.2.4
-PyYAML==5.1
+PyYAML==5.4
 regex==2020.2.20
 requests==2.20.0
 rsa==3.4.2
