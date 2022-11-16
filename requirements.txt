@@ -18,11 +18,11 @@ idna==2.7
 itsdangerous==1.1.0
 Jinja2==2.11.3
 jmespath==0.9.3
-joblib==0.14.1
+joblib==1.2.0
 kappa==0.6.0
 lambda-packages==0.20.0
 MarkupSafe==1.1.0
-numpy==1.19.0
+numpy==1.22.0
 pkg-resources==0.0.0
 placebo==0.8.2
 pyasn1==0.4.8
@@ -31,7 +31,7 @@ python-slugify==1.2.4
 PyYAML==5.4
 regex==2020.2.20
 requests==2.20.0iru
-rsa==4.1.0
+rsa==4.7.0
 s3transfer==0.1.13
 sacremoses==0.0.38
 sentencepiece==0.1.85
@@ -43,7 +43,7 @@ tqdm==4.43.0
 transformers==2.5.0
 troposphere==2.3.4
 Unidecode==1.0.22
-urllib3==1.25.9
+urllib3==1.26.5
 Werkzeug==0.15.3
 wsgi-request-logger==0.4.6
 zappa==0.47.0
