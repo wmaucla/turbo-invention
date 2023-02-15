@@ -44,7 +44,7 @@ transformers==2.5.0
 troposphere==2.3.4
 Unidecode==1.0.22
 urllib3==1.26.5
-Werkzeug==0.15.3
+Werkzeug==2.2.3
 wsgi-request-logger==0.4.6
 zappa==0.47.0
 -f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
